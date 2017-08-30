@@ -8,6 +8,7 @@ Apex，一款高度模仿Ghost1.x默认主题Casper的博客主题；
 ### 截图预览
 
 ![](https://ooo.0o0.ooo/2017/08/30/59a62f9aa9ecb.jpg)
+<br>
 ![](https://i.loli.net/2017/08/30/59a62f9a8d478.jpg)
 
 
