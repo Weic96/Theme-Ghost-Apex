@@ -1,10 +1,10 @@
 {
     "name": "apex",
-    "description": "The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",
-    "demo": "https://demo.ghost.io",
-    "version": "2.0.3",
+    "description": "Ghost1.x默认主题Casper的最佳中文站博客主题；",
+    "demo": "https://weic.me/themes-apex/",
+    "version": "0.1",
     "engines": {
-        "ghost": ">=1.2.0"
+        "ghost": ">=1.0"
     },
     "license": "MIT",
     "screenshots": {
@@ -12,9 +12,9 @@
         "mobile": "assets/screenshot-mobile.jpg"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "Weic",
+        "email": "i@weic96.cn",
+        "url": "https://weic.me/"
     },
     "gpm": {
         "type": "theme",
@@ -29,10 +29,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Casper.git"
+        "url": "https://github.com/Weic96/Theme-Ghost-Apex"
     },
-    "bugs": "https://github.com/TryGhost/Casper/issues",
-    "contributors": "https://github.com/TryGhost/Casper/graphs/contributors",
+    "bugs": "https://github.com/Weic96/Theme-Ghost-Apex/issues",
+    "contributors": "https://github.com/Weic96/Theme-Ghost-Apex/graphs/contributors",
     "devDependencies": {
         "autoprefixer": "6.3.6",
         "cssnano": "3.7.1",
