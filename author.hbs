@@ -1,0 +1,52 @@
+{{!< default}}
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+<!-- 头图开始 -->
+<div class="container-fluid site-cover" style="background-image:url({{author.cover_image}})">
+      <div class="site-cover-text">
+            <header class="post-main-header">
+                  <h2 class="post-main-header-title" style="margin-bottom:0;">
+                        {{author.name}}
+                  </h2>
+            </header>
+      </div>
+</div><!-- 头图结束 -->
+
+<!-- 内容主体开始 -->
+<main class="container article-main">
+      <!-- 文章组开始 -->
+      <div class="article-group row" id="ajax-box">
+{{#foreach posts}}
+{{> "post-card"}}
+{{/foreach}}
+      </div><!-- 文章组结束 -->
+      {{#if pagination.next}}
+            <div class="pagination-box">
+                  <span class="pagination-btn"><i class="fa fa-refresh"></i></span>
+            </div>
+            <script type="text/javascript">
+                  var currentPage = 1;
+                  var maxPages = parseInt('{{pagination.pages}}');
+                  var $result = $('.article-group');
+                  var pathname = window.location.pathname;
+                  pathname = pathname.replace(/#(.*)$/g, '').replace('/\//g', '/');
+                  $(".pagination-btn").click(function(){
+                        currentPage++;
+                        var nextPage = pathname + 'page/' + currentPage + '/';
+                        if(currentPage <= maxPages){
+                              $.get(nextPage, function (data) {
+                                    $result.append($(data).find('.article-alone'));
+                              })
+                        }else if (currentPage >= maxPages) {
+                              alert("已经是最后一页了！");
+                              $(this).hide();
+                        }
+                  })
+            </script>
+      {{/if}}
+</main><!-- 内容主体结束 -->
+
+<script type="text/javascript">
+      AV.init({appId:config.APP_ID,appKey:config.APP_KEY});
+</script>

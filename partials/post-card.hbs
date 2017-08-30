@@ -1,0 +1,19 @@
+<article class="article-alone article-alone-flex animated fadeIn">
+       {{#if feature_image}}
+      <a href="{{url}}" class="article-alone-thumb">
+            <img src="{{feature_image}}" alt="">
+      </a>
+      {{/if}}
+      <div class="article-alone-content">
+            <a href="{{url}}" class="article-alone-title">{{title}}</a>
+            <section class="article-alone-abstract">
+                  {{excerpt characters="100"}}
+            </section>
+      </div>
+      <footer class="article-alone-footer">
+            {{#author}}
+            <span class="article-alone-item"><img class="article-alone-author-img" src="{{profile_image}}" alt=""></span>
+            <span class="article-alone-item"><a href="{{url}}" class="article-alone-author">{{name}}</a></span>
+            {{/author}}
+      </footer>
+</article>

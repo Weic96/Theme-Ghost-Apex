@@ -1,0 +1,81 @@
+{{!--
+This error template is used for all 404 errors, which might occur on your site.
+It's a good idea to keep this template as minimal as possible in terms of both file size and complexity.
+--}}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+      {{!-- Document Settings --}}
+      <meta utf-8 />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      {{!-- Base Meta --}}
+      <title>{{meta_title}}</title>
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      {{!-- Styles'n'Scripts --}}
+      <link rel="stylesheet" type="text/css" href="{{asset "css/bootstrap.min.css"}}" />
+      <link rel="stylesheet" type="text/css" href="{{asset "css/font-awesome.min.css"}}" />
+      <link rel="stylesheet" type="text/css" href="{{asset "css/apex.min.css"}}" />
+      <script src="{{asset "js/jquery-2.2.4.min.js"}}"></script>
+
+      <style media="screen">
+            .error-code{
+                  display: block;
+                  width: 100%;
+                  text-align: center;
+                  font-size: 100px;
+                  font-weight: 800;
+                  margin-top: 3rem;
+            }
+            .error-description{
+                  margin-top: 3rem;
+                  text-align: center;
+                  font-size: 20px;
+            }
+      </style>
+</head>
+<body>
+{{> "site-nav"}}
+      <div class="container-fluid site-cover" style="background-image:url({{@blog.cover_image}})"></div>
+      <main class="container article-main">
+            <!-- 文章组开始 -->
+            <div class="article-group row">
+                  <articele class="post-main">
+                        <section class="post-main-content" style="margin-bottom:0;">
+                              <p class="error-code">{{code}}</p>
+                              <p class="error-description">{{message}}</p>
+                        </section>
+                  </articele>
+            </div><!-- 文章组结束 -->
+      </main><!-- 内容主体结束 -->
+
+                <footer class="site-footer">
+                     <div class="site-footer-left">
+                            <p>© {{date format="YYYY"}}<a href="{{@blog.url}}">&nbsp;{{@blog.title}}</a><script>if(siteInfo.icp){document.write(' | ' + "<a href=''>" + siteInfo.icp + "</a>")}</script></p>
+                     </div>
+                     <div class="site-footer-right">
+                            <p>Powered by <a href="https://hexo.io" target="_blank">Ghost</a>,Themes <a href="https://weic.me/themes-life/" target="_blank">Apex</a></p>
+                     </div>
+                     <div style="clear:both;"></div>
+                </footer>
+                <!-- 返回顶部按钮 -->
+                <span class="retop"><i class="fa fa-long-arrow-up"></i></span>
+
+                {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+                <script src="{{asset "js/popper.min.js"}}"></script>
+                <script src="{{asset "js/bootstrap.min.js"}}"></script>
+                <script src="{{asset "js/apex.js"}}"></script>
+                <script type="text/javascript">
+                  var sctLeft = ($(".site-cover").width() - $(".site-cover-text").width())/2;
+                  var sctTop = ($(".site-cover").height() - $(".site-cover-text").height())/2;
+                  $(".site-cover-text").css({
+                        "left":sctLeft,
+                        "top":sctTop
+                  })
+                  </script>
+</body>
+</html>

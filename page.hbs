@@ -1,0 +1,76 @@
+{{!< default}}
+
+{{#post}}
+
+<!-- 头图开始 -->
+{{#if feature_image}}
+<div class="container-fluid site-cover" style="background-image:url({{feature_image}});background-size: 100% auto;">
+      <div class="site-cover-text">
+            <header class="post-main-header">
+                  <h2 class="post-main-header-title" style="margin-bottom:0;">
+                        {{title}}
+                  </h2>
+            </header>
+      </div>
+</div><!-- 头图结束 -->
+{{else}}
+<div class="container-fluid site-cover" style="background-image:url({{asset "images/default.jpg"}});background-size: 100% auto;">
+      <div class="site-cover-text">
+            <header class="post-main-header">
+                  <h2 class="post-main-header-title" style="margin-bottom:0;">
+                        {{title}}
+                  </h2>
+            </header>
+      </div>
+</div><!-- 头图结束 -->
+{{/if}}
+<div class="progress" ></div>
+<!-- 内容主体开始 -->
+<main class="container article-main">
+      <!-- 文章组开始 -->
+      <div class="article-group row">
+            <articele class="post-main">
+                  <section class="post-main-content" style="margin-bottom:0;">
+                        {{content}}
+                  </section>
+            </articele>
+      </div><!-- 文章组结束 -->
+</main><!-- 内容主体结束 -->
+{{/post}}
+
+<script type="text/javascript">
+// 文章阅读进度条
+    $.fn.extend({
+        headBand: function(option) {
+            var ViewH = $(window).height(),
+            ScrollH = $('body')[0].scrollHeight,
+            S_V = ScrollH - ViewH,
+            getThis = this.prop("className") !== "" ? "." + this.prop("className") : this.prop("id") !== "" ? "#" + this.prop("id") : this.prop("nodeName");
+            $(window).scroll(function() {
+                var ViewH_s = $(this).height(),
+                ScrollH_s = $('body')[0].scrollHeight,
+                ScoT_s = $(this).scrollTop(),
+                Band_w = 100 - (ScrollH_s - ViewH_s - ScoT_s) / S_V * 100;
+                defaultSetting = {
+                    background: "green",
+                    height: 3,
+                    width: Band_w + '%'
+                };
+                setting = $.extend(defaultSetting, option);
+                $(getThis).css({
+                    "background": setting.background,
+                    'position': 'fixed',
+                    'top': '0',
+                    'z-index': '99999',
+                    "height": setting.height + "px",
+                    'width': defaultSetting.width
+              });
+            });
+            return this;
+      }
+ });
+ $('.progress').headBand({
+    'background':'#3eb0ef',//设置背景色
+    'height':"2" //设置进度条高度
+});
+</script>

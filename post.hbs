@@ -1,0 +1,229 @@
+{{!< default}}
+
+{{#post}}
+
+<!-- 头图开始 -->
+{{#if feature_image}}
+<div class="container-fluid site-cover" style="background-image:url({{feature_image}});background-size: 100% auto;">
+      <div class="site-cover-text">
+            <header class="post-main-header">
+                  <h2 class="post-main-header-title">
+                        {{title}}
+                  </h2>
+                  <div class="post-main-header-info">
+                        <span class="article-alone-item"><i class=" fa fa-clock-o"></i><time class="article-alone-time">{{date format="YYYY-MM-DD"}}</time></span>
+                        <!-- <span class="article-alone-item"><i class="fa fa-commenting-o"></i><a href="" class="article-alone-view">21</a></span> -->
+                        <span class="article-alone-item"><i class="fa fa-eye"></i><span class="views views-post" id="{{url}}" title="{{title}}"></span></span>
+                  </div>
+            </header>
+      </div>
+</div><!-- 头图结束 -->
+{{else}}
+<div class="container-fluid site-cover" style="background-image:url({{asset "images/default.jpg"}});background-size: 100% auto;">
+      <div class="site-cover-text">
+            <header class="post-main-header">
+                  <h2 class="post-main-header-title">
+                        {{title}}
+                  </h2>
+                  <div class="post-main-header-info">
+                        <span class="article-alone-item"><i class=" fa fa-clock-o"></i><time class="article-alone-time">{{date format="YYYY-MM-DD"}}</time></span>
+                        <!-- <span class="article-alone-item"><i class="fa fa-commenting-o"></i><a href="" class="article-alone-view">21</a></span> -->
+                        <span class="article-alone-item"><i class="fa fa-eye"></i><span class="views views-post" id="{{url}}" title="{{title}}"></span></span>
+                  </div>
+            </header>
+      </div>
+</div><!-- 头图结束 -->
+{{/if}}
+<div class="progress" ></div>
+<!-- 内容主体开始 -->
+<main class="container article-main">
+      <!-- 文章组开始 -->
+      <div class="article-group row">
+            <articele class="post-main">
+                  <section class="post-main-content">
+                        {{content}}
+                  </section>
+                  <footer class="post-main-footer">
+                        {{#author}}
+                        <div class="post-main-footer-author">
+                              <div class="post-main-footer-author-info">
+                                    <img  src="{{profile_image}}">
+                                    <section>
+                                          <a href="{{url}}">{{name}}</a>
+                                          <p>{{bio}}</p>
+                                    </section>
+                              </div>
+                              <div class="post-main-footer-author-btn">
+                                    <a href="{{url}}" class="btn btn-outline-secondary">Read more</a>
+                              </div>
+                        </div>
+                        {{/author}}
+                  </footer>
+            </articele>
+
+            <div class="post-extend-btn">
+                  <span data-toggle="modal" data-target=".post-extend-btn-donate-modal"><span class="post-extend-btn-donate" data-toggle="tooltip" data-placement="top" title="" data-original-title="打赏"><i class="fa fa-coffee"></i></span></span>
+                  <span data-toggle="modal" data-target=".post-extend-btn-qrcode-modal"><span class="post-extend-btn-qrcode" data-toggle="tooltip" data-placement="top" title="" data-original-title="文章二维码"><i class="fa fa-qrcode" ></i></span></span>
+            </div>
+
+            <!-- 打赏弹出 -->
+            <div class="modal fade post-extend-btn-donate-modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                              <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">打赏本文</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                              <div class="modal-body">
+                                    <div class="row post-donate-content">
+                                          <div class="col-md-4">
+                                                <p>支付宝</p>
+                                                <script type="text/javascript">
+                                                      document.write("<img class='post-donate-content-img no-lightbox' src='"+siteInfo.alipay+"'/>")
+                                                </script>
+                                          </div>
+                                          <div class="col-md-4">
+                                                <p>微信</p>
+                                                <script type="text/javascript">
+                                                      document.write("<img class='post-donate-content-img no-lightbox' src='"+siteInfo.wechatpay+"'/>")
+                                                </script>
+                                          </div>
+                                          <div class="col-md-4">
+                                                <p>财付通</p>
+                                                <script type="text/javascript">
+                                                      document.write("<img class='post-donate-content-img no-lightbox' src='"+siteInfo.tenpay+"'/>")
+                                                </script>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">关闭</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <!-- 二维码弹出 -->
+            <div class="modal fade post-extend-btn-qrcode-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                              <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">文章二维码</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                              <div class="modal-body">
+                                    <div class="row post-qrcode-content">
+                                          <span class="post-qrcode-content-canvas"></span>
+                                          <img class="post-qrcode-content-img no-lightbox" src=""/>
+                                    </div>
+                              </div>
+                              <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">关闭</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            {{!-- 文章页二维码生成脚本 --}}
+        <script>
+            // post QRcode
+            // 中文转码
+            function toUtf8(str) {
+                var out, i, len, c;
+                out = "";
+                len = str.length;
+                for (i = 0; i < len; i++) {
+                    c = str.charCodeAt(i);
+                    if ((c >= 0x0001) && (c <= 0x007F)) {
+                        out += str.charAt(i);
+                    } else if (c > 0x07FF) {
+                        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                        out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                        out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+                    } else {
+                        out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+                        out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+                    }
+                }
+                return out;
+            }
+            // 生成
+            var qrcode= $('.post-qrcode-content-canvas').qrcode({width: 150,height: 150,text: toUtf8("{{@blog.url}}{{url}}")}).hide();
+            var canvas=qrcode.find('canvas').get(0);
+            $('.post-qrcode-content-img').attr('src',canvas.toDataURL('image/jpg'));
+        </script>
+
+        {{!-- 在此插入评论模块，默认为Valine --}}
+        {{> "valine"}}
+        {{!-- 在此插入评论模块 --}}
+
+            <article class="article-alone article-alone-flex post-info-block">
+                  <div class="post-class">
+                        <small>- {{author.name}} -</small>
+                        <a href="">{{title}}</a>
+                  </div>
+                  <div class="read-next-divider">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
+                  </div>
+                  <div class="post-tags">
+                        {{#primary_tag}}
+                           <a href="{{url}}">{{name}}</a>
+                        {{/primary_tag}}
+                  </div>
+            </article>
+
+            {{#next_post}}
+                {{> "post-card"}}
+            {{/next_post}}
+
+            {{#prev_post}}
+                {{> "post-card"}}
+            {{/prev_post}}
+
+      </div><!-- 文章组结束 -->
+</main><!-- 内容主体结束 -->
+{{/post}}
+
+<script type="text/javascript">
+// 文章阅读进度条
+    $.fn.extend({
+        headBand: function(option) {
+            var ViewH = $(window).height(),
+            ScrollH = $('body')[0].scrollHeight,
+            S_V = ScrollH - ViewH,
+            getThis = this.prop("className") !== "" ? "." + this.prop("className") : this.prop("id") !== "" ? "#" + this.prop("id") : this.prop("nodeName");
+            $(window).scroll(function() {
+                var ViewH_s = $(this).height(),
+                ScrollH_s = $('body')[0].scrollHeight,
+                ScoT_s = $(this).scrollTop(),
+                Band_w = 100 - (ScrollH_s - ViewH_s - ScoT_s) / S_V * 100;
+                defaultSetting = {
+                    background: "green",
+                    height: 3,
+                    width: Band_w + '%'
+                };
+                setting = $.extend(defaultSetting, option);
+                $(getThis).css({
+                    "background": setting.background,
+                    'position': 'fixed',
+                    'top': '0',
+                    'z-index': '99999',
+                    "height": setting.height + "px",
+                    'width': defaultSetting.width
+              });
+            });
+            return this;
+      }
+ });
+ $('.progress').headBand({
+    'background':'#3eb0ef',//设置背景色
+    'height':"2" //设置进度条高度
+});
+
+// 文章页作者信息按钮位置
+var PaBtnTop =  ($(".post-main-footer-author").height()-$(".post-main-footer-author-btn").height())/2;
+$(".post-main-footer-author-btn").css("marginTop",PaBtnTop);
+</script>
