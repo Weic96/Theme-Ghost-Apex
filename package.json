@@ -2,7 +2,7 @@
     "name": "apex",
     "description": "Ghost1.x默认主题Casper的最佳中文站博客主题；",
     "demo": "https://weic.me/themes-apex/",
-    "version": "0.1",
+    "version": "0.2",
     "engines": {
         "ghost": ">=1.0"
     },
